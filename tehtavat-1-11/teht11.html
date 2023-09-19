@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurssille ilmoittautuimen</title>
+</head>
+
+<body>
+  <h1>Ilmoittaudu kurssille</h1>
+
+  <form action="http://codez.savonia.fi/jussi/api/test.php" method="get">
+    <table id="asas">
+      <tr>
+        <td><label for="laitos">Oppilaitos:</label></td>
+        <td><input type="text" id="Oppilaitos" name="laitos" value="Savonia AMK" readonly></td>
+      </tr>
+      <tr>
+        <td><label for="nimi">Nimi:</label></td>
+        <td><input type="text" id="Nimi" name="nimi"></td>
+      </tr>
+      <tr>
+        <td><label for="vuosikurssi">Vuosikurssi:</label></td>
+        <td><input type="password" id="Vuosikurssi" name="vuosikurssi"></td>
+      </tr>
+    </table>
+
+    <br>
+    <tr>
+      <div>
+        <td>
+          <label for="course">Kurssin nimi:</label>&nbsp;
+        </td>
+        <select name="course[]" id="course" multiple size="7">
+          <optgroup label="Ryhmä 1">
+            <option value="Matematiikka">Matematiikka</option>
+            <option value="Fysiikka">Fysiikka</option>
+            <option value="kemia">Kemia</option>
+          </optgroup>
+          <optgroup label="Ryhmä 2">
+            <option value="tietorakenteet">Tietorakenteet</option>
+            <option value="webohjelmointi">Webohjelmointi</option>
+          </optgroup>
+        </select>
+      </div>
+    </tr>
+
+    <br>
+    <br>
+
+    <label for="kurssityyppi">Kurssin tyyppi:</label>
+    <select id="kurssityyppi" name="tyyppi" required>
+      <option value="Lahiopetus">Lahiopetus</option>
+      <option value="verkkokurssi">Verkkokurssi</option>
+    </select>
+    <br><br>
+    <div>
+      <label for="Sukupuoli">Sukupuoli:</label><br>
+      <input type="radio" id="mies" name="Sukupuoli" value="mies">
+      <label for="mies">Mies</label><br>
+      <input type="radio" id="nainen" name="sukupuoli" value="nainen">
+      <label for="nainen">Nainen</label><br>
+      <input type="radio" id="muu" name="sukupuoli" value="muu">
+      <label for="muu">Muu</label>
+    </div><br>
+
+    <label id="hobbies1-4">Harrastukset:</label><br>
+    <table>
+      <tr>
+        <td><input type="checkbox" id="hobbies1" name="hobbies[]" value="Pelaaminen"></td>
+        <td><label for="hobbies1">Pelaaminen</label></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="hobbies2" name="hobbies[]" value="Koripallo"></td>
+        <td><label for="hobbies2">Koripallo</label></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="hobbies3" name="hobbies[]" value="Musiikin kuuntelu" checked></td>
+        <td><label for="hobbies3">Musiikin kuuntelu</label></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" id="hobbies4" name="hobbies[]" value="Maalaus"></td>
+        <td><label for="hobbies4">Maalaus</label></td>
+      </tr>
+    </table>
+    <br>
+    <input type="submit" value="Lähetä"><br>
+    <input type="reset" value="Tyhjennä" style="margin-top: 1%;"><br>
+    <input type="image" name="submit" src="send.png" alt="Submit" style="margin-top: 1%; margin-bottom: 1%;">
+
+  </form>
+</body>
+
+</html>
