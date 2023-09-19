@@ -1,0 +1,292 @@
+.container {
+    display: grid;
+
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    height: 250px;
+    border: black;
+    width: 600px;
+    margin: auto;
+    font-family: Calibri;
+
+}
+
+
+
+#staff {
+
+    background-color: #eecdad;
+    grid-row-start: 1;
+    grid-column-start: 1;
+
+    grid-row-end: 3;
+    grid-column-end: 3;
+
+    width: 100px;
+    height: 100px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#age {
+
+    background-color: #5d5d9d;
+    grid-row-start: 3;
+    grid-column-start: 1;
+
+    grid-row-end: 6;
+    grid-column-end: 2;
+    width: 40px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#age1 {
+
+    background-color: #77f8cc;
+    grid-row-start: 3;
+    grid-column-start: 2;
+
+    grid-row-end: 4;
+    grid-column-end: 2;
+    width: 60px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#age2 {
+
+    background-color: #db8987;
+    grid-row-start: 4;
+    grid-column-start: 2;
+
+    grid-row-end: 5;
+    grid-column-end: 3;
+    width: 60px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#age3 {
+
+    background-color: #bc89dc;
+    grid-row-start: 5;
+    grid-column-start: 2;
+
+    grid-row-end: 6;
+    grid-column-end: 3;
+    width: 60px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#edu {
+
+    background-color: #98b667;
+    grid-row-start: 1;
+    grid-column-start: 3;
+
+    grid-row-end: 2;
+    grid-column-end: 6;
+    height: 25px;
+    width: 600px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#other {
+
+    background-color: #d7cda9;
+    grid-row-start: 2;
+    grid-column-start: 3;
+
+    grid-row-end: 3;
+    grid-column-end: 4;
+    height: 75px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#school1 {
+
+    background-color: #6e5e7a;
+    grid-row-start: 2;
+    grid-column-start: 4;
+
+    grid-row-end: 3;
+    grid-column-end: 5;
+    height: 75px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+
+}
+
+#school2 {
+
+    background-color: #9dec7c;
+    grid-row-start: 2;
+    grid-column-start: 5;
+
+    grid-row-end: 3;
+    grid-column-end: 6;
+    height: 75px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#item-1 {
+
+    background-color: #86e89e;
+    grid-row-start: 3;
+    grid-column-start: 3;
+
+    grid-row-end: 4;
+    grid-column-end: 4;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#UEF {
+
+    background-color: #787ed5;
+    grid-row-start: 3;
+    grid-column-start: 4;
+
+    grid-row-end: 4;
+    grid-column-end: 5;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#savo {
+
+    background-color: #5be7ee;
+    grid-row-start: 3;
+    grid-column-start: 5;
+
+    grid-row-end: 4;
+    grid-column-end: 6;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#list1 {
+
+    background-color: #687f77;
+    grid-row-start: 4;
+    grid-column-start: 3;
+
+    grid-row-end: 5;
+    grid-column-end: 4;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#list2 {
+
+    background-color: #9f776e;
+    grid-row-start: 4;
+    grid-column-start: 4;
+
+    grid-row-end: 5;
+    grid-column-end: 5;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#list3 {
+
+    background-color: #db9a85;
+    grid-row-start: 4;
+    grid-column-start: 5;
+
+    grid-row-end: 5;
+    grid-column-end: 6;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#footer1 {
+
+    background-color: #a78cb7;
+    grid-row-start: 5;
+    grid-column-start: 3;
+
+    grid-row-end: 6;
+    grid-column-end: 4;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#footer2 {
+
+    background-color: #fe5a8d;
+    grid-row-start: 5;
+    grid-column-start: 4;
+
+    grid-row-end: 6;
+    grid-column-end: 5;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+}
+
+#footer3 {
+
+    background-color: #77877c;
+    grid-row-start: 5;
+    grid-column-start: 5;
+
+    grid-row-end: 6;
+    grid-column-end: 6;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+div {
+    text-align: center;
+    border-style: solid;
+}

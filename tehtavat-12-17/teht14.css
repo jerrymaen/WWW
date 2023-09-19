@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: lightgray;
+    padding: 10px;
+  }
+  
+  a:link {
+    text-decoration: none;
+}
+
+a {
+    color: blue;
+}
+
+  .savonia {
+    font-family: Arial;
+    font-size: 15px;
+  }
+  
+  .search-box {
+    display: flex;
+    margin-left:auto
+  }
+  
+  .search-box input[type="text"] {
+    margin-right: 5px;
+    font-size: 15px;
+  }
+  
+  
+  .menu {
+    font-family: Arial;
+    font-size: 15px;
+    background-color: #FFFFFF;
+    padding: 5px;
+    margin-left:20px;
+  }

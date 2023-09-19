@@ -1,0 +1,39 @@
+@media (max-width: 768px) {
+  .container {
+    width: auto
+  }
+
+}
+
+.navbar {
+  padding: 0 !important;
+}
+
+
+
+.container-fluid {
+  display: flex;
+  background-color: #e3f2fd;
+  height: 100px;
+  padding: 0;
+}
+
+.block2 {
+  padding: 10px;
+}
+
+img {
+  width: 120px;
+  height: 32px;
+  align-content: center;
+}
+
+
+table {
+  border: 0px solid white;
+  font-weight: 500;
+}
+
+a.nav-link {
+  text-decoration: underline;
+}

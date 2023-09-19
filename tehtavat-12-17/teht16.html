@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="teht16.css">
+    <title>Teht16</title>
+</head>
+
+<body>
+    <h1>Syötä ilmoittautumistiedot</h1><br>
+    <div class="container">
+        <div class="name">Nimi:</div>
+        <div class="namebox"><input type="text"></div>
+        <div class="year">Vuosikurssi:</div>
+        <div class="yearbox"><input type="password" name="course_year" id="course_year"></div>
+        <div class="school">Oppilaitos:</div>
+        <div class="schoolbox"><input type="text"></div>
+        <div class="course_name">Kurssin nimi:</div>
+        <div class="course_namebox">
+            <select name="course" id="course">
+                <option value="TKJ">TKJ</option>
+                <option value="math">Matematiikka</option>
+                <option value="physics">Fysiikka</option>
+                <option value="chemistry">Kemia</option>
+                <option value="database">Tietorakenteet</option>
+                <option value="web">Webohjelmointi</option>
+            </select>
+        </div>
+        <div class="course_type">Kurssin toteutus:</div>
+        <div class="course_typebox">
+            <select name="course_type" id="course_type">
+                <option value="remote">Etäopetus</option>
+                <option value="contact">Lähiopetus</option>
+            </select>
+        </div>
+
+        <div class="gender">Sukupuoli:</div>
+        <div class="gender_radio">
+          <input type="radio" id="male" name="gender" value="mies">
+          <label for="male">mies</label><br>
+          <input type="radio" id="female" name="gender" value="nainen">
+          <label for="female">nainen</label><br>
+          <input type="radio" id="nocomment" name="gender" value="nocomment">
+          <label for="nocomment">en kommentoi</label>
+        </div>
+        
+        <div class="hobbies">Harrastukset:</div>
+        <div class="hobbies_checkbox">
+            <label for="ATK">ATK-pelit</label>
+            <input type="checkbox" id="atk" name="hobbies" value="ATK-pelit">
+            <label for="computer_games">Tietokonepelit</label>
+            <input type="checkbox" id="computer_games" name="hobbies" value="Tietokonepelit">
+            <label for="pc_games">PC-pelit</label>
+            <input type="checkbox" id="pc" name="hobbies" value="PC-pelit" checked>
+            <label for="videogames">Videopelit</label>
+            <input type="checkbox" id="videogames" name="hobbies" value="Videopelit">
+        </div>
+        <button class="button clear_button">Tyhjennä</button>
+        <button class="button send_button">Lähetä</button>
+    </div>
+</body>
+
+</html>
