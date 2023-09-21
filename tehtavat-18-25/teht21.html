@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teht21</title>
+    <script src="tehtavat.js"></script>
+</head>
+
+<body>
+    <!-----------------------------------------------------------------------teht21------------------------------------------------------------------------------------------------------>
+    <label for="pvm">Syötä päivämäärä muodossa dd.mm.yyyy:</label><br>
+    <input type="text" id="pvm" /><br><br>
+    <button id="tarkista" onclick="tarkistapvm21()">Tarkista</button>
+    <p id="tulos"></p>
+
+    <hr>
+    <!-----------------------------------------------------------------------teht22------------------------------------------------------------------------------------------------------>
+
+    <script>
+        function teht22(listId) {
+            let lista = document.getElementById(listId);
+            let liElements = lista.getElementsByTagName("li");
+            let result = "";
+
+            for (let i = 0; i < liElements.length; i++) {
+                result += liElements[i].innerHTML + ",";
+            }
+
+            if (result.endsWith(",")) {
+                result = result.slice(0, -1);
+            }
+
+            return result;
+        }
+    </script>
+
+    </head>
+
+    <body>
+
+        <ul id="lista">
+            <li>Maija</li>
+            <li>Liisa</li>
+            <li>Anna</li>
+            <li>Kalle</li>
+            <li>Juha</li>
+        </ul>
+
+        <button id="tulosta" onclick="document.getElementById('results').value = teht22('lista')">Tulosta</button>
+        <input type="text" id="results" readonly placeholder="Tulokset">
+
+        <hr>
+        <!-----------------------------------------------------------------------teht23/24------------------------------------------------------------------------------------------------------>
+
+        <style>
+            .error {
+                background-color: red;
+            }
+        </style>
+        <script>
+            function add_user23() {
+                let etunimi = document.getElementById("etunimi").value;
+                let lahiosoite = document.getElementById("lahiosoite").value;
+
+                let table = document.getElementById("results_23");
+                let row = table.insertRow(-1);
+                let etunimiCell = row.insertCell(0);
+                let lahiosoiteCell = row.insertCell(1);
+
+                etunimiCell.innerHTML = etunimi;
+                lahiosoiteCell.innerHTML = lahiosoite;
+
+                document.getElementById("etunimi").value = "";
+                document.getElementById("lahiosoite").value = "";
+            }
+
+
+            function add_user24() {
+                let etunimiInput = document.getElementById("etunimi");
+                let lahiosoiteInput = document.getElementById("lahiosoite");
+
+                let etunimi = etunimiInput.value;
+                let lahiosoite = lahiosoiteInput.value;
+
+                if (etunimi.trim() === "") {
+                    etunimiInput.classList.add("error");
+                } else {
+                    etunimiInput.classList.remove("error");
+                }
+
+                if (lahiosoite.trim() === "") {
+                    lahiosoiteInput.classList.add("error");
+                } else {
+                    lahiosoiteInput.classList.remove("error");
+                }
+
+                if (etunimi.trim() === "" || lahiosoite.trim() === "") {
+                    ;
+                    return;
+                }
+
+                let table = document.getElementById("results_23");
+                let row = table.insertRow(-1);
+                let etunimiCell = row.insertCell(0);
+                let lahiosoiteCell = row.insertCell(1);
+
+                etunimiCell.innerHTML = etunimi;
+                lahiosoiteCell.innerHTML = lahiosoite;
+
+                etunimiInput.value = "";
+                lahiosoiteInput.value = "";
+            }
+        </script>
+        </head>
+
+        <body>
+            <form id="data">
+                <label for="etunimi">Nimi:</label>
+                <input type="text" id="etunimi" required><br><br>
+
+                <label for="lahiosoite">Osoite:</label>
+                <input type="text" id="lahiosoite" required><br><br>
+            </form>
+
+
+            <button type="button" id="lisaa" onclick="add_user23()">Lisää</button>
+            <button type="button" id="lisaa_24" onclick="add_user24()">Lisää</button>
+
+            <br><br><br>
+
+            <table id="results_23">
+            </table>
+
+            <hr>
+            <!-----------------------------------------------------------------------teht25------------------------------------------------------------------------------------------------------>
+
+            <style>
+                .hidden {
+                    display: none;
+                }
+            </style>
+
+            <script>
+                function artikkeli(artikkelinumero) {
+                    for (let i = 1; i <= 4; i++) {
+                        document.getElementById(`article${i}`).classList.add('hidden');
+                    }
+                    document.getElementById(`article${artikkelinumero}`).classList.remove('hidden');
+                }
+            </script>
+
+            </head>
+
+            <body>
+                <a href="#" id="link1" onclick="artikkeli(1)">Oulu</a><br>
+                <a href="#" id="link2" onclick="artikkeli(2)">Joensuu</a><br>
+                <a href="#" id="link3" onclick="artikkeli(3)">Rovaniemi</a><br>
+                <a href="#" id="link4" onclick="artikkeli(4)">Kalajoki</a><br>
+
+                <article id="article1" class="hidden">
+                    <h2>Oulu</h2>
+                    <p>Oulu (ruots. Uleåborg) on Suomen kaupunki ja Pohjois-Pohjanmaan maakuntakeskus, joka sijaitsee
+                        Oulujoen suulla
+                        Perämeren rannikolla Pohjois-Pohjanmaan maakunnassa. Vuonna 1605 perustettu Oulu on
+                        Pohjois-Suomen vanhin ja
+                        väkiluvultaan Suomen viidenneksi suurin kaupunki ja neljänneksi suurin kaupunkialue. Oulun
+                        väkiluku oli 211 858
+                        asukasta 31. joulukuuta 2022 ja pinta-ala (1. tammikuuta 2022) 3 817,69 neliökilometriä, josta 2
+                        972,45 on
+                        maata, 80,32 sisävesiä ja loput 764,92 neliökilometriä merta.[1] Oulu on pinta-alaltaan Suomen
+                        suurin
+                        rannikkokunta. <br><br>
+
+                        Oulu on alueensa hallinnollinen ja kaupallinen keskus. Oulun naapurikunnat ovat Hailuoto, Ii,
+                        Kempele, Liminka,
+                        Lumijoki, Muhos, Pudasjärvi, Tyrnävä ja Utajärvi. <br><br>
+
+                        Nykyinen Oulun kaupunki perustettiin 1. tammikuuta 2013, kun entinen Oulun kaupunki sekä
+                        Haukiputaan, Kiimingin,
+                        Oulunsalon ja Yli-Iin kunnat yhdistyivät. <br><br>
+
+                        Oulu on Euroopan kulttuuripääkaupunki vuonna 2026. <br><br> Lähde: <a
+                            href="https://fi.wikipedia.org/wiki/oulu">Wikipedia</a></p>
+                    </p>
+                </article>
+
+                <article id="article2" class="hidden">
+                    <h2>Joensuu</h2>
+                    <p>Joensuu on Suomen kaupunki ja Pohjois-Karjalan maakuntakeskus, joka sijaitsee Saimaan Pyhäselän
+                        pohjoisrannalla
+                        Pielisjoen suulla Pohjois-Karjalan maakunnassa. Joensuu on asukasluvultaan Suomen 12. suurin
+                        kaupunki. Joensuun
+                        kaupungin alueella asuu noin 78 000 ihmistä. Joensuun naapurikunnat ovat Ilomantsi, Kontiolahti,
+                        Lieksa, Liperi,
+                        Rääkkylä ja Tohmajärvi. Lisäksi Joensuu rajoittuu idässä Venäjään.<br><br>
+
+                        Joensuu kuuluu Joensuun seutukuntaan, johon kuuluvat nykyisin myös Heinäveden, Ilomantsin,
+                        Juuan, Kontiolahden,
+                        Liperin ja Polvijärven kunnat sekä Outokummun kaupunki. Näistä Ilomantsi ei ole mukana Joensuun
+                        seudun
+                        seutuyhteistyössä. Euroopan metsäinstituutti sijaitsee kaupungissa.<br><br>
+
+                        Syksyllä 2008 Joensuun kaupunki sai oman lippunsa, jonka on suunnitellut Leea Wasenius. Lippu
+                        perustuu kaupungin
+                        vaakunaan. Kaupungin nimikkoeläinlajeja ovat rupimanteri (vuodesta 2012 alkaen), kultasirkku,
+                        järvilohi ja
+                        orava (vuodesta 2012 alkaen). Nimikkosieni on herkkutatti ja nimikkokasvi juurtokaisla. <br><br>
+                        Lähde: <a href="https://fi.wikipedia.org/wiki/joensuu">Wikipedia</a></p>
+                    </p>
+                </article>
+
+                <article id="article3" class="hidden">
+                    <h2>Rovaniemi</h2>
+                    <p>Rovaniemi on Suomen kaupunki ja Lapin maakuntakeskus, joka sijaitsee napapiirin tuntumassa
+                        Kemijoen ja Ounasjoen
+                        yhtymäkohdassa.<br><br>
+
+                        Rovaniemi on maakuntakeskus, yliopistokaupunki ja alueensa kaupan, hallinnon ja koulutuksen
+                        keskus sekä urheilu-
+                        ja kulttuurikaupunki. Rovaniemi erotettiin kauppalaksi Rovaniemen maalaiskunnasta
+                        (siihenastisesta Rovaniemen
+                        kunnasta) vuonna 1929 ja vuonna 1960 Rovaniemen kauppalasta tuli yksi Suomen kuudesta
+                        ensimmäisestä niin sanotusta
+                        uudesta kaupungista. Rovaniemen maalaiskunnan kanssa vuoden 2006 alussa yhdistynyt Rovaniemi on
+                        Suomen 17. suurin
+                        kaupunki väestömäärältään (vuonna 2020), mutta Suomen sekä Euroopan suurin pinta-alaltaan.
+                        Kaupunki on myös
+                        Pohjois-Suomen toiseksi suurin kaupunki väkiluvultaan Oulun jälkeen. Rovaniemi on Suomen
+                        pohjoisin kaupunki, tosin
+                        Kemijärven keskustaajama on Rovaniemen keskustaajamaa pohjoisempi.<br><br>
+
+                        Rovaniemen naapurikunnat ovat pohjoisessa Kittilä ja Sodankylä, lännessä Kolari, Pello ja
+                        Ylitornio, etelässä
+                        Tervola, Ranua ja Posio ja idässä Kemijärvi ja Pelkosenniemi.<br><br>
+
+                        Sana rova tarkoittaa metsäistä harjua tai harvapuustoista ylänköä. Sana on laina saamen
+                        kielestä, jossa roavvi
+                        merkitsee vanhaa paloaluetta tai metsäistä vaaraa tai harjua. Rovaniemen nimi saamelaiskielillä
+                        on:
+                        inarinsaameksi Ruávinjargâ, pohjoissaameksi Roavvenjárga, Roavenjárga ja koltansaameksi
+                        Ruäʹvnjargg. <br><br>
+                        Lähde: <a href="https://fi.wikipedia.org/wiki/rovaniemi">Wikipedia</a></p>
+                    </p>
+                </article>
+
+                <article id="article4" class="hidden">
+                    <h2>Kalajoki</h2>
+                    <p>Kalajoki on kaupunki Kalajoen suulla, Oulun Eteläisessä, Pohjois-Pohjanmaan maakunnassa.<br><br>
+
+                        31. joulukuuta 2022 kaupungissa asui 12 333 henkilöä ja sen pinta-ala on 2 391,29 km², josta
+                        6,92 km² on
+                        vesistöjä. Väestötiheys on 13,35 asukasta/km².<br><br>
+
+                        Kaupunki on tunnettu matkailusta, maataloudesta ja metalliteollisuudesta. Kalajoki sijaitsee
+                        valtatien 8 ja
+                        valtatien 27 risteyksessä, ja sen läheisyydessä sijaitseva Rahjan satama toimii liikennesolmuna
+                        rekka- ja
+                        laivaliikenteen välillä. Lähimmät rautatieasemat sijaitsevat Ylivieskassa ja
+                        Kannuksessa.<br><br>
+
+                        Kalajoen naapurikunnat ovat Alavieska, Kokkola, Kannus, Merijärvi, Pyhäjoki, Sievi ja Ylivieska.
+                        <br><br> Lähde:
+                        <a href="https://fi.wikipedia.org/wiki/Kalajoki">Wikipedia</a>
+                    </p>
+                </article>
+                <hr>
+
+
+            </body>
+
+</html>
