@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teht26a</title>
+
+    <style>
+        label {
+            font-weight: normal;
+        }
+
+        input[id="opiskelijanro"] {
+            display: none;
+        }
+    </style>
+    </style>
+
+    <script>
+        function removeBlank(element) {
+            element.value = element.value.trim();
+        }
+
+        function Tarkista() {
+            let nimi = document.getElementById("nimi").value;
+            let osoite = document.getElementById("osoite").value;
+
+
+            nimi = nimi.trim();
+            osoite = osoite.trim();
+
+            if (nimi.length < 5 && osoite.length < 5) {
+                error.innerHTML = "Nimi ja osoite väärin";
+                return false;
+            }
+
+            if (nimi.length < 5) {
+                error.innerHTML = "Nimi väärin";
+                return false;
+            }
+
+            if (osoite.length < 5) {
+                error.innerHTML = "Osoite väärin";
+                return false;
+            }
+
+
+            data.innerHTML = nimi + "," + osoite;
+            error.innerHTML = "";
+
+            document.getElementById("error").innerHTML = "";
+            document.getElementById("data").innerHTML = nimi + "," + osoite;
+            return false;
+
+        }
+
+
+
+        function Tarkista_27() {
+            let ammatti = document.getElementById("ammatti").value;
+            let error_ammatti = document.getElementById("error_ammatti");
+            let erityisruokavalio = document.getElementById("erityisruokavalio");
+            let tarvitsee_majoituksen = document.getElementById("tarvitsee_majoituksen");
+            let opiskelija = document.getElementById("opiskelija");
+            let optiot = document.getElementById("optiot");
+            let data = document.getElementById("data");
+            let tyo = document.getElementById("tyo");
+            let opiskelijanro = document.getElementById("opiskelijanro");
+            let o_nro = document.getElementById("o_nro");
+            let valinnat = [];
+
+
+            if (ammatti == "tyhja") {
+                error_ammatti.innerHTML = "Valitse ammatti";
+                return false;
+            }
+
+
+            if (erityisruokavalio.checked) {
+                valinnat.push(erityisruokavalio.value);
+            }
+
+            if (tarvitsee_majoituksen.checked) {
+                valinnat.push(tarvitsee_majoituksen.value);
+            }
+
+            if (opiskelija.checked) {
+                valinnat.push(opiskelija.value);
+            }
+
+            if (valinnat.length > 0) {
+                optiot.innerHTML = "Valitsit seuraavat optiot:" + valinnat.join(",");
+            }
+
+            opiskelija.addEventListener("change", function () {
+                if (opiskelija.checked) {
+                    opiskelijanro.style.display = "block";
+                } else {
+                    opiskelijanro.style.display = "none";
+                }
+            });
+
+            opiskelijanro.addEventListener("input", function () {
+                o_nro.innerHTML = "Opiskelijanro: " + this.value;
+            });
+
+            if (opiskelija.checked && !opiskelijanro.value) {
+                alert("Opiskelijanumero on pakollinen");
+            }
+
+            tyo.innerHTML = "Ammattisi on: " + ammatti;
+
+            return false;
+        }
+
+        data.innerHTML = "";
+        tyo.innerHTML = "";
+        data.innerHTML = nimi + "," + osoite;
+        tyo.innerHTML = "Ammattisi on: " + ammatti;
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <h3>Rekisteröidy tapahtumaan</h3>
+        <label for="nimi">Nimi:</label>
+        <input type="text" id="nimi">
+
+        <br><br>
+
+        <label for="osoite">Osoite:</label>
+        <input type="text" id="osoite">
+
+        <br><br>
+
+
+        <label for="ammatti">Ammatti:</label>
+        <select id="ammatti">
+            <option value="tyhja"></option>
+            <option value="Ekonomi">Ekonomi</option>
+            <option value="Maanviljelijä">Maanviljelijä</option>
+            <option value="Lääkäri">Lääkäri</option>
+            <option value="Mekaanikko">Mekaanikko</option>
+        </select><br>
+
+
+
+        <br>
+        <input type="checkbox" id="erityisruokavalio" value="Erityisruokavalio">
+        <label for="erityisruokavalio">Erityisruokavalio</label><br>
+        <input type="checkbox" id="tarvitsee_majoituksen" value="Tarvitsee majoituksen">
+        <label for="tarvitsee_majoituksen">Tarvitsee majoituksen</label><br>
+        <input type="checkbox" id="opiskelija" value="Opiskelija">
+        <label for="opiskelija">Opiskelija</label><br>
+        <label for="opiskelijanro"></label><br>
+        <input type="text" id="opiskelijanro" placeholder="Opiskelijanro">
+        <h4 id="error"></h4>
+        <h4 id="error_ammatti"></h4>
+        <div id="results">
+            <p id="data"></p>
+            <p id="tyo"></p>
+            <p id="o_nro"></p>
+            <p id="optiot"></p>
+        </div>
+    </form>
+    <button id="reg" type="button" onclick="return Tarkista();">Rekisteröidy 26</button>
+    <button id="reg_27" type="button" onclick="return Tarkista_27();">Rekisteröidy 27</button>
+
+</body>
+
+
+</html>
