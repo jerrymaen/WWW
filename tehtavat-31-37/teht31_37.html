@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teht31_37</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        table#tuotteet {
+            text-align: center;
+        }
+
+        #d_content {
+            display: none;
+        }
+    </style>
+
+    <script>
+        function tallenna() {
+            let etunimi = document.getElementById('etunimi').value;
+            let osoite = document.getElementById('osoite').value;
+            let virhe = document.getElementById('virhe');
+            let tulos = document.getElementById('tulos');
+
+            virhe.innerHTML = "";
+
+            if (etunimi.length < 5 || osoite.length < 5) {
+                if (etunimi.length < 5) {
+                    virhe.innerHTML += "Pakollisia tietoja puuttuu: Etunimi on liian lyhyt.";
+                }
+                if (osoite.length < 5) {
+                    virhe.innerHTML += "Pakollisia tietoja puuttuu: Osoite on liian lyhyt.";
+                }
+
+                if (etunimi.length < 5 && osoite.length < 5) {
+                    virhe.innerHTML += "Pakollisia tietoja puuttuu: Etunimi on liian lyhyt. Osoite on liian lyhyt.";
+                }
+            } else {
+                tulos.innerHTML = etunimi + "," + osoite;
+            }
+        }
+
+        function lisaa() {
+            let etunimi = document.getElementById('etunimi').value;
+            let osoite = document.getElementById('osoite').value;
+            let results = document.getElementById('results');
+            let error = document.getElementById('error');
+
+            error.innerHTML = "";
+
+            if (etunimi.length < 5 || osoite.length < 5) {
+                if (etunimi.length < 5) {
+                    error.innerHTML += "Pakollisia tietoja puuttuu: Etunimi on liian lyhyt. ";
+                }
+                if (osoite.length < 5) {
+                    error.innerHTML += "Pakollisia tietoja puuttuu: Osoite on liian lyhyt.";
+                }
+                setTimeout(function () {
+                    error.innerHTML = "Pakollisia tietoja puuttuu: Etunimi on liian lyhyt. Osoite on liian lyhyt.";
+                }, 3000);
+            } else {
+                results.innerHTML = etunimi + "," + osoite;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Lomake</h1>
+    <table>
+        <tr>
+            <td>
+                <label for="etunimi">Etunimi:</label>
+            </td>
+            <td>
+                <input type="text" id="etunimi">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="osoite">Osoite:</label>
+            </td>
+            <td>
+                <input type="text" id="osoite">
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <button type="button" id="tallenna" onclick="tallenna()">Tallenna</button><br><br>
+    <button type="button" id="lisaa" onclick="lisaa()">Lisää</button>
+    <p id="virhe"></p>
+    <p id="tulos"></p>
+    <p id="error"></p>
+    <select title="tulokset">
+        <option id="results" value="1"></option>
+        <option id="results" value="2"></option>
+    </select>
+
+    <hr>
+    <br>
+
+    <!-------------------------------------------------------------------------------------teht32------------------------------------------------------------------------------->
+
+    <br>
+
+    <script>
+
+        $(function () {
+            $.datepicker.regional['fi'] = {
+                closeText: 'Sulje',
+                prevText: '&laquo;Edellinen',
+                nextText: 'Seuraava&raquo;',
+                currentText: 'T&auml;n&auml;&auml;n',
+                monthNames: ['Tammikuu', 'Helmikuu', 'Maaliskuu', 'Huhtikuu', 'Toukokuu', 'Kes&auml;kuu',
+                    'Hein&auml;kuu', 'Elokuu', 'Syyskuu', 'Lokakuu', 'Marraskuu', 'Joulukuu'],
+                monthNamesShort: ['Tammi', 'Helmi', 'Maalis', 'Huhti', 'Touko', 'Kes&auml;',
+                    'Hein&auml;', 'Elo', 'Syys', 'Loka', 'Marras', 'Joulu'],
+                dayNamesShort: ['Su', 'Ma', 'Ti', 'Ke', 'To', 'Pe', 'Su'],
+                dayNames: ['Sunnuntai', 'Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai'],
+                dayNamesMin: ['Su', 'Ma', 'Ti', 'Ke', 'To', 'Pe', 'La'],
+                weekHeader: 'Vk',
+                dateFormat: 'dd.mm.yy',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: ''
+            };
+
+            $.datepicker.setDefaults($.datepicker.regional['fi']);
+
+            let dateFormat = "dd.mm.yy";
+            let minDate = new Date(2020, 8 - 1, 1);
+            let maxDate = new Date(2020, 12 - 1, 31);
+
+            $("#pvm").datepicker({
+                dateFormat: dateFormat,
+                minDate: minDate,
+                maxDate: maxDate,
+                onSelect: function (dateText) {
+                    $("#pvm_result").text("Pvm: " + dateText);
+                }
+            });
+
+            $("#pvm_result").text("Pvm:ää ei ole valittu").css("color", "red");
+        });
+    </script>
+
+    <label for="pvm">Syntymäpäivä:</label>
+    <input type="text" id="pvm" name="pvm">
+
+    <p id="pvm_result"></p>
+
+    <br>
+    <hr>
+
+    <!-------------------------------------------------------------------------------------teht33------------------------------------------------------------------------------->
+
+    <br>
+
+
+    <script>
+        $(function () {
+            $("#autoc").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "http://codez.savonia.fi/jussi/api/json_data.php",
+                        dataType: "json",
+                        data: {
+                            term: request.term
+                        },
+                        success: function (data) {
+                            response(data);
+                        }
+                    });
+                },
+                minLength: 2
+            });
+        });
+    </script>
+
+    <input id="autoc" placeholder="Syntymäpaikka">
+    <br>
+    <br>
+    <hr>
+    <br>
+
+    <!-------------------------------------------------------------------------------------teht34------------------------------------------------------------------------------->
+    <script>
+        $(function () {
+            $("#rekisteroidy").on("click", function () {
+                $("#dialog").dialog("open");
+            });
+
+            $("#dialog").dialog({
+                autoOpen: false,
+                title: "Rekisteröityminen",
+                buttons: {
+                    "Tallenna": function () {
+                        let nimi = $("#d_nimi").val();
+                        let tunnus = $("#d_tunnus").val();
+
+                        if (nimi.length >= 5 && tunnus.length >= 5) {
+                            $("#d_results").text(nimi + ", " + tunnus);
+                            $("#dialog").dialog("close");
+                            $("#d_content").show();
+                        } else {
+                            $("#d_error").text("Data väärin");
+                        }
+                    },
+                    "Peruuta": function () {
+                        $("#dialog").dialog("close");
+                    }
+                }
+            });
+
+        });
+    </script>
+    </head>
+
+    <body>
+        <button id="rekisteroidy">Rekisteröidy</button>
+
+        <div id="dialog" title="Rekisteröityminen">
+            <input type="text" id="d_nimi" placeholder="Nimi"><br><br>
+            <input type="text" id="d_tunnus" placeholder="Tunnus"><br><br>
+            <h3 id="d_error"></h3>
+        </div>
+
+        <p id="d_content">Tämä oli alunperin piilossa, mutta näkyykö nyt?</p>
+        <p id="d_results"></p>
+        <hr>
+        <br>
+
+        <!-------------------------------------------------------------------------------------teht35------------------------------------------------------------------------------->
+
+        <select id="tuotetyypit_he" title="etsi_tuotetyyppi">
+            <option value="-1"></option>
+        </select>
+
+
+        <label for="nimi_he">Nimi:</label>
+        <input type="text" id="nimi_he">
+
+        <label for="valmistaja_he">Valmistaja:</label>
+        <input type="text" id="valmistaja_he"><br><br>
+        <button id="hae_tyypit">Hae tyypit</button>
+        <label for="tuotetyypit">tuotetyypit</label>
+        <select id="tuotetyypit"></select><br><br>
+        <button id="hae_data">Hae data</button>
+        <table id="tuotteet"></table>
+        <script>
+            $(document).ready(function () {
+                $('#hae_tyypit').click(function () {
+
+                    $('#tuotetyypit').empty();
+
+                    $.ajax({
+                        url: 'http://localhost:3000/tuotetyyppi',
+                        type: 'GET',
+                        success: function (data) {
+                            data.forEach(function (tyyppi) {
+                                $('#tuotetyypit').append('<option value="' + tyyppi.id + '">' + tyyppi.nimi + tyyppi.koodi + '</option>');
+                            });
+                        }
+                    });
+                });
+
+                $('#hae_data').click(function () {
+                    $('#tuotteet').empty();
+                    $.ajax({
+                        url: 'http://localhost:3000/tuote',
+                        type: 'GET',
+                        success: function (data) {
+                            $('#tuotteet').append('<tr><th>Nimi</th><th>Selite</th><th>Tyyppi ID</th><th>Ostopvm</th><th>Valmistaja</th><th>Hinta</th></tr>');
+
+                            data.forEach(function (tuote) {
+                                $('#tuotteet').append('<tr><td>' + tuote.nimi + '</td><td>' + tuote.selite + '</td><td>' + tuote.tyyppi_id + '</td><td>' + tuote.ostopvm + '</td><td>' + tuote.valmistaja + '</td><td>' + tuote.hinta + '</td></tr>');
+                                $('#tuotteet tr:last-child').append('<button class="poista" id="poista_' + tuote.id + '">Poista</button>');
+                            });
+                        }
+                    });
+                });
+                $('#tuotteet').on('click', '.poista', function (e) {
+                    var id = $(this).attr('id').split('_')[1];
+
+                    $.ajax({
+                        url: 'http://localhost:3000/tuote/' + id,
+                        type: 'DELETE',
+                        success: function () {
+                            $(this).closest('tr').remove();
+                        },
+                        error: function () {
+
+                            alert('Virhe tuotteen poistamisessa');
+                        }
+                    });
+
+                    e.preventDefault();
+                });
+            });
+
+        </script>
+    </body>
+
+</html>
