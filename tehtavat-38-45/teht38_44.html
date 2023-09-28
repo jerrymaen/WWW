@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teht38_44</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        #dialog {
+            display: none;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('#haeNappi').click(function () {
+                let nimi = $('#nimi').val();
+                let osoite = $('#osoite').val();
+                let asty_avain = $('#asty').val();
+
+                let url = 'https://codez.savonia.fi/jussi/api/asiakas/haku.php';
+                let params = {};
+
+                if (nimi) {
+                    params.nimi = nimi;
+                }
+
+                if (osoite) {
+                    params.osoite = osoite;
+                }
+
+                if (asty_avain && asty_avain !== '0') {
+                    params.asty_avain = asty_avain;
+                }
+
+                $.get(url, params, function (data) {
+                    let taulukko = $('#taulukko tbody');
+                    taulukko.empty();
+
+                    data.forEach(function (asiakas) {
+                        let row = $('<tr>');
+                        row.append($('<td>').text(asiakas.nimi));
+                        row.append($('<td>').text(asiakas.osoite));
+                        row.append($('<td>').text(asiakas.postinro));
+                        row.append($('<td>').text(asiakas.postitmp));
+                        row.append($('<td>').text(asiakas.luontipvm));
+                        row.append($('<td>').text(asiakas.asty_avain));
+                        row.append($('<td>').html('<button onclick="muuta(' + asiakas.avain + ')">Muuta</button>'));
+                        row.append($('<td>').html('<button onclick="poista(' + asiakas.avain + ')">Poista</button>'));
+                        taulukko.append(row);
+                    });
+                });
+            });
+        });
+
+        function poista(avain) {
+            $.get('https://codez.savonia.fi/jussi/api/asiakas/poista.php ' + avain, function (data) {
+                if (data.success) {
+                    $('' + avain).remove();
+                } else {
+                    alert('Poisto epäonnistui');
+                }
+            });
+        }
+
+        $(function () {
+            $("#lisaa_asiakas").on("click", function () {
+                $("#dialog").dialog("open");
+            });
+
+            $("#dialog").dialog({
+
+                autoOpen: false,
+                title: "Lisää asiakas",
+                buttons: {
+                    "Tallenna": function () {
+                        let nimi = $("#nimi_lisays").val();
+                        let osoite = $("#osoite_lisays").val();
+                        let postinro = $("#postinro_lisays").val();
+                        let postitmp = $("#postitmp_lisays").val();
+                        let asty_avain = $("#asty_lisays").val();
+
+                        let url = 'https://codez.savonia.fi/jussi/api/asiakas/lisaa.php';
+                        let params = {};
+
+                        if (nimi) {
+                            params.nimi = nimi;
+                        }
+
+                        if (osoite) {
+                            params.osoite = osoite;
+                        }
+
+                        if (asty_avain && asty_avain !== '0') {
+                            params.asty_avain = asty_avain;
+                        }
+
+                        $.post(url, params)
+                            .done(function (data) {
+                                console.log("Asiakas lisätty onnistuneesti.");
+                            })
+                            .fail(function (error) {
+                                console.error("Asiakkaan lisäys epäonnistui: " + error.responseText);
+                            });
+
+                        $("#dialog").dialog("close");
+                    },
+                    "Peruuta": function () {
+                        $("#dialog").dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Asiakas-haku</h1>
+
+    <div>
+        <label for="nimi">Nimi:</label>
+        <input type="text" id="nimi" name="nimi" />
+    </div>
+    <br>
+    <div>
+        <label for="osoite">Osoite:</label>
+        <input type="text" id="osoite" name="osoite" />
+    </div>
+    <br>
+    <div>
+        <label for="asty">Asiakastyyppi:</label>
+        <select name="asty" id="asty" title="Asiakastyyppi">
+            <option value="0">Ei valinta</option>
+            <option value="1">Yritysasiakas</option>
+            <option value="2">Kuluttaja asiakas</option>
+            <option value="3">RA</option>
+            <option value="4">Joukkoe asiakas</option>
+            <option value="5">Testiasiakas</option>
+        </select>
+    </div>
+    <p><button id="haeNappi">Hae</button></p>
+
+    <p><button id="lisaa_asiakas">Lisää asiakas</button></p>
+
+    <div id="dialog" title="Lisää asiakas">
+        <form id="lisaa_form">
+            <input type="text" id="nimi_lisays" name="nimi_lisays" placeholder="Nimi"><br><br>
+            <input type="text" id="osoite_lisays" name="osoite_lisays" placeholder="Osoite"><br><br>
+            <input type="text" id="postinro_lisays" name="postinro_lisays" placeholder="Postinumero"><br><br>
+            <input type="text" id="postitmp_lisays" name="postitmp_lisays" placeholder="Postitoimipaikka"><br><br>
+            <input type="text" id="asty_avain_lisays" name="asty_avain_lisays" placeholder="Asiakastyyppi ID"><br><br>
+            <select name="asty_lisays" id="asty_lisays" title="Asiakastyyppi_lisaa">
+                <option value="0">Ei valinta</option>
+                <option value="1">Yritysasiakas</option>
+                <option value="2">Kuluttaja asiakas</option>
+                <option value="3">RA</option>
+                <option value="4">Joukkoe asiakas</option>
+                <option value="5">Testiasiakas</option>
+            </select>
+        </form>
+    </div>
+
+    <hr>
+
+    <table id="taulukko">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Osoite</th>
+                <th>Postinro</th>
+                <th>Postitmp</th>
+                <th>Luontipvm</th>
+                <th>Asty_avain</th>
+                <th>Muuta</th>
+                <th>Poista</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>
