@@ -20,5 +20,3 @@ Feel free to browse through the contents of this repository, but please keep in 
 
 If you have any feedback, suggestions, or improvements related to the content, please don't hesitate to get in touch. I appreciate your input and collaboration!
 
-Happy studying!
-
