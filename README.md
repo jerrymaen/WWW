@@ -1,5 +1,7 @@
 # WWW - Study Repository
 
+![Alt](https://repobeats.axiom.co/api/embed/cfc84bf0722c7d9fb1131a461ae6ea061b710462.svg "Repobeats analytics image")
+
 This repository is dedicated to my academic studies and contains assignments and projects related to my coursework in HTML, CSS, and JavaScript.
 
 ## Purpose
@@ -18,5 +20,7 @@ Feel free to browse through the contents of this repository, but please keep in 
 
 ## Contributions
 
-If you have any feedback, suggestions, or improvements related to the content, please don't hesitate to get in touch. I appreciate your input and collaboration!
+If you have any feedback, suggestions, or improvements related to the content, please don't hesitate to get in touch!
+
+**NOTE: This repository will no longer receive updates.**
 
